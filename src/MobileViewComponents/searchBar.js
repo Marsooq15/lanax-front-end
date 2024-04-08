@@ -20,8 +20,8 @@ function SearchBar() {
         >
           <div>
             <Input
-              style={{ borderColor: 'lightgray', fontFamily: 'cursive' }}
-              type="text"
+              style={{ borderColor: 'lightgray', fontFamily: 'sans-serif' }}
+              // type="text"
               placeholder="Search"
             />
           </div>

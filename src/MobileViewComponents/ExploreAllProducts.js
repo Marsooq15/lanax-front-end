@@ -9,8 +9,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import '../styles.css';
 import { useEffect, useState } from 'react';
-import { Route, useNavigate } from 'react-router-dom';
-function SpecialDealsSec() {
+import { useNavigate } from 'react-router-dom';
+function ExploreAllProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -22,11 +22,8 @@ function SpecialDealsSec() {
           'https://desolate-sea-92343-a8a85255a35c.herokuapp.com/api/products?populate=*'
         );
         const data = await response.json();
-        // Filter products where isSpecial is true
-        const specialProducts = data.data
-          .filter(product => product.attributes.isSpecial)
-          .slice(0, 6);
-        setProducts(specialProducts);
+        const firstSixProducts = data.data.slice(0, 6);
+        setProducts(firstSixProducts);
         setTimeout(() => {
           setLoading(false);
         }, 2000);
@@ -38,7 +35,6 @@ function SpecialDealsSec() {
     fetchData();
   }, []);
   const openWhatsApp = product => {
-    console.log('open', product);
     const whatsAppMsg = encodeURIComponent(
       'Hi' + 'I just seen' + product?.attributes?.productName
     );
@@ -58,7 +54,7 @@ function SpecialDealsSec() {
   };
   const gotoViewPage = () => {
     // Navigate to the "/view-all" page with a parameter
-    navigate('/view-all/special');
+    navigate('/view-all/all');
   };
   return (
     <div
@@ -67,6 +63,7 @@ function SpecialDealsSec() {
         width: '100%',
         marginTop: '24px',
         backgroundColor: '#F8F8F8',
+        marginBottom: '20%',
       }}
     >
       <div
@@ -85,7 +82,6 @@ function SpecialDealsSec() {
             flexDirection: 'row',
           }}
         >
-          <FaBolt color="orange" />
           <Text
             style={{
               // fontFamily: 'cursive',
@@ -93,9 +89,8 @@ function SpecialDealsSec() {
               fontWeight: '700',
             }}
           >
-            SPECIAL OFFER
+            EXPLORE ALL PRODUCTS
           </Text>
-          <FaBolt color="orange" />
         </div>
 
         <Text
@@ -133,8 +128,8 @@ function SpecialDealsSec() {
                   paddingTop: '8px',
                   paddingBottom: '8px',
                   // height: '100%',
-                  minHeight: '260px',
-                  border: '1px solid lightgrey',
+                  minHeight:"260px",
+                  border:"1px solid lightgrey"
                 }}
               >
                 <div
@@ -255,4 +250,4 @@ function SpecialDealsSec() {
   );
 }
 
-export default SpecialDealsSec;
+export default ExploreAllProducts;

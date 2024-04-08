@@ -8,11 +8,16 @@ import {
   Code,
   Grid,
   theme,
+  Switch,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 import { isMobile } from 'react-device-detect';
 import MainPage from './MobileViewComponents/MainPage';
+import { Route, Routes } from 'react-router-dom';
+import ViewAllProducts from './MobileViewComponents/ViewAllProducts';
+import ViewAllBrands from './MobileViewComponents/ViewAllBrands';
+import ViewAllCategories from './MobileViewComponents/ViewAllCategories';
 
 function App() {
   return (
@@ -43,7 +48,15 @@ function App() {
       ) : (
         // mobile view
         <ChakraProvider disableGlobalStyle theme={theme}>
-          <MainPage></MainPage>
+          {/* <MainPage></MainPage> */}
+          <Routes>
+            {/* Define the route for the "view-all" page */}
+            <Route path="/" element={<MainPage />} />
+            {/* <Route path="/view-all" element={<ViewAllProducts />} /> */}
+            <Route path="/view-all/:parameter" element={<ViewAllProducts />} />
+            <Route path="/all-brands" element={<ViewAllBrands />} />
+            <Route path="/all-categories" element={<ViewAllCategories />} />
+          </Routes>
         </ChakraProvider>
       )}
     </>
