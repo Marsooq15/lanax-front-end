@@ -36,8 +36,16 @@ function ExploreAllProducts() {
   }, []);
   const openWhatsApp = product => {
     const whatsAppMsg = encodeURIComponent(
-      'Hi' + 'I just seen' + product?.attributes?.productName
+      'Hi there!\n would like to place an order for the following item:\n' +
+        'Product Name: ' +
+        product?.attributes?.productName +
+        '\n' +
+        'Price: ' +
+        product?.attributes?.offerPrice +
+        '\n' +
+        'Looking forward to your response. Thank you!'
     );
+
     const mobileNumber = '8943493896'; // Replace with the recipient's phone number
     const url = `whatsapp://send?text=${whatsAppMsg}&phone=91${mobileNumber}`;
 
@@ -128,8 +136,8 @@ function ExploreAllProducts() {
                   paddingTop: '8px',
                   paddingBottom: '8px',
                   // height: '100%',
-                  minHeight:"260px",
-                  border:"1px solid lightgrey"
+                  minHeight: '260px',
+                  border: '1px solid lightgrey',
                 }}
               >
                 <div

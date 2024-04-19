@@ -8,6 +8,7 @@ import ShopbyCategoriesSec from './ShopbyCategoriesSec';
 import ExploreAllProducts from './ExploreAllProducts';
 import Footer from './Footer';
 import { Spinner } from '@chakra-ui/react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 function MainPage() {
   const [fullLoading, setFullLoading] = useState(true);
@@ -67,6 +68,31 @@ function MainPage() {
                 <ShopbyCategoriesSec></ShopbyCategoriesSec>
                 <ExploreAllProducts></ExploreAllProducts>
                 <Footer></Footer>
+                <div
+                  style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    right: '20px',
+                    borderRadius: '50%',
+                    backgroundColor: '#25D366',
+                    width: '50px',
+                    height: '50px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    zIndex: 10,
+                  }}
+                >
+                  <a
+                    href="https://wa.me/+919846984301"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'white', textDecoration: 'none' }}
+                  >
+                    <FaWhatsapp size={24} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

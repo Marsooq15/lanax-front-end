@@ -1,7 +1,7 @@
 import { Image } from '@chakra-ui/react';
 import React from 'react';
 import { BiMenu } from 'react-icons/bi';
-import Logo2 from '../Logo2.jpeg';
+import Logo2 from '../logo-new.jpeg';
 import { BiUser } from 'react-icons/bi';
 import { BiCart } from 'react-icons/bi';
 

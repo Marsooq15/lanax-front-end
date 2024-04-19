@@ -2,13 +2,15 @@ import { Image, Skeleton, Spinner } from '@chakra-ui/react';
 import { BiArrowBack, BiCart, BiUser } from 'react-icons/bi';
 import backIcon from '../backIcon1.jpeg';
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function ViewAllBrands() {
   const [fullLoading, setFullLoading] = useState(true);
   const [brandImages, setBrandImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [brandData, setBrandData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const timeout = setTimeout(() => {
       setFullLoading(false); // Set loading to false after timeout
@@ -19,6 +21,7 @@ function ViewAllBrands() {
     )
       .then(response => response.json())
       .then(data => {
+        setBrandData(data.data);
         const images = data.data.map(item => {
           return item.attributes.brandLogo.data[0].attributes.url;
         });
@@ -31,6 +34,9 @@ function ViewAllBrands() {
         console.error('Error fetching brand images:', error);
       });
   }, []);
+  const gotoBrandwiseProducts = brand => {
+    navigate(`/view-all/${brand.id}`);
+  };
   return (
     <>
       {/* Conditionally render the spinner while loading */}
@@ -121,7 +127,7 @@ function ViewAllBrands() {
               height: '100%',
               // backgroundColor: 'red',
               marginTop: '20%',
-              columnGap:"20px"
+              columnGap: '20px',
             }}
           >
             {brandImages.map((imageUrl, index) => (
@@ -141,6 +147,7 @@ function ViewAllBrands() {
                     justifyContent: 'center', // Center the content horizontally
                     alignItems: 'center', // Center the content vertically
                   }}
+                  onClick={() => gotoBrandwiseProducts(brandData[index])}
                 >
                   <Image
                     objectFit="contain"

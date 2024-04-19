@@ -43,7 +43,6 @@ function ShopbyBrandSec() {
     navigate('/all-brands');
   };
   const gotoBrandwiseProducts = brand => {
-    console.log(brand);
     navigate(`/view-all/${brand.id}`);
   };
   return (

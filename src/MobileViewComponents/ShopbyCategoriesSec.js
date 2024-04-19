@@ -29,6 +29,7 @@ function ShopbyCategoriesSec() {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
   const gotoViewPage = () => {
+    console.log('here');
     // Navigate to the "/view-all" page with a parameter
     navigate('/all-categories');
   };
@@ -61,13 +62,7 @@ function ShopbyCategoriesSec() {
           </Text>
         </div>
 
-        <Text
-          style={{
-            // fontFamily: 'cursive',
-            color: 'red',
-          }}
-          onClick={gotoViewPage}
-        >
+        <Text style={{ color: 'red', zIndex: 2 }} onClick={gotoViewPage}>
           View All
         </Text>
       </div>
